@@ -7,7 +7,7 @@ const settings = {
 };
 
 const image = new Image();
-image.src = 'https://i.postimg.cc/HscYDP0q/MG-8794.jpg';
+image.src = 'https://i.postimg.cc/X7rnwfHw/IMG-20221022-191904-897.jpg';
 image.crossOrigin = "Anonymous";
 
 let effect;
@@ -31,16 +31,31 @@ class Cell {
 	}
 	draw(ctx){
 		ctx.fillStyle = this.color;
-		if (this.symbol === 'O') {
-			// ctx.strokeStyle = 'white';
-			// ctx.lineWidth = 5;
-			// ctx.strokeRect(this.x, this.y, 10, 10);
-			ctx.font = '30px Hack';
-			ctx.fillText(this.symbol, this.x, this.y);
-		} else {
-			ctx.font = '30px Hack';
-			ctx.fillText(this.symbol, this.x, this.y);
-		}
+		// if (this.symbol === 'W' || this.symbol === 'X' || this.symbol === 'O' || this.symbol === '#') {
+		// 	ctx.save();
+		// 	ctx.strokeStyle = 'white';
+		// 	ctx.translate(this.x, this.y);
+		// 	ctx.rotate(random.range(1, 180) * Math.PI / 180);
+		// 	ctx.translate(-this.x, -this.y);
+		// 	ctx.lineWidth = random.range(2, 5);
+		// 	ctx.strokeRect(this.x, this.y, random.range(10, 20), random.range(10, 20));
+		// 	ctx.restore();
+		// } else {
+		// 	ctx.save();
+		// 	ctx.translate(this.x, this.y);
+		// 	ctx.rotate(random.range(1, 180) * Math.PI / 180);
+		// 	ctx.translate(-this.x, -this.y);
+		// 	ctx.font = `${random.range(10, 40)}px Hack`;
+		// 	ctx.fillText(this.symbol, this.x, this.y);
+		// 	ctx.restore();
+		// }
+		ctx.save();
+		// ctx.translate(this.x, this.y);
+		// ctx.rotate(random.range(1, 180) * Math.PI / 180);
+		// ctx.translate(-this.x, -this.y);
+		ctx.font = `40px Hack`;
+		ctx.fillText(this.symbol, this.x, this.y);
+		ctx.restore();
 	}
 }
 
@@ -70,9 +85,9 @@ class AsciiEffect {
 		if (g < 160) return '%';
 		if (g < 180) return '&';
 		if (g < 200) return '#';
-		if (g < 220) return 'T';
-		if (g < 240) return 'O';
-		if (g => 240) return 'X';
+		if (g < 220) return 'O';
+		if (g < 240) return 'X';
+		if (g => 240) return 'W';
 		return '';
 	}
 	scanImage(cellSize) {
